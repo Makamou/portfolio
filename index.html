@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="tailwind.css" />
+  </head>
+
+  <body class="relative">
+    <header>
+      <!-- fixed  top-0 left-0 w-full z-10 -->
+      <div class="">
+        <nav
+          class="fixed top-0 left-0 w-full z-20 bg-blue-950 opacity-90 border-1 border-b-amber-300"
+        >
+          <div class="pb-8 mx-auto max-w-8lg sm:px-10 xl:px-15 2xl:px-29">
+            <div class="relative flex h-16 items-center justify-between">
+              <!-- Mobile menu button -->
+              <div
+                class="absolute inset-y-0 left-0 flex items-center sm:hidden"
+              >
+                <button
+                  type="button"
+                  class="relative inline-flex items-center justify-center p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-none focus:ring-inset"
+                  aria-controls="mobile-menu"
+                  aria-expanded="false"
+                >
+                  <span class="absolute -inset-0.5"></span>
+                  <span class="sr-only">Open main menu</span>
+                  <!-- Menu icon -->
+                  <svg
+                    class="block w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    />
+                  </svg>
+                  <svg
+                    class="hidden w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Logo and menu items -->
+              <div
+                class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+              >
+                <div class="flex items-center">
+                  <img
+                    class="mt-7 h-20 w-auto rounded-full"
+                    src="image/img1.png"
+                    alt="Company"
+                  />
+                </div>
+                <div class="hidden sm:block sm:ml-6">
+                  <div class="flex space-x-4 mt-11">
+                    <a
+                      href="#projects"
+                      class="rounded-md active:bg-gray-900 px-3 py-2 text-lg font-medium text-white hover:bg-gray-700 hover:text-white"
+                      aria-current="page"
+                      >Projects</a
+                    >
+                    <a
+                      href="#resume"
+                      class="rounded-md active:bg-gray-900 px-3 py-2 text-lg font-medium text-neutral-400 hover:bg-gray-700 hover:text-white"
+                      >Skills</a
+                    >
+                    <a
+                      href="#blog"
+                      class="rounded-md active:bg-gray-900 px-3 py-2 text-lg font-medium text-neutral-400 hover:bg-gray-700 hover:text-white"
+                      >Games</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contact link -->
+              <div
+                class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 mt-5"
+              >
+                <a
+                  href="#"
+                  class="text-neutral-400 border-2 px-1 font-bold hover:bg-stone-300 hover:border-black hover:text-black rounded-sm text-xl"
+                  >Contact</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile menu -->
+          <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pt-2 pb-3">
+              <a
+                href="#projects"
+                class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                aria-current="page"
+                >Projects</a
+              >
+              <a
+                href="#resume"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                >Skills</a
+              >
+              <a
+                href="#blog"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                >Games</a
+              >
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="">
+      <section class="mt-30 mb-13">
+        <div class="flex flex-col items-center justify-center gap-10 xl:mt-40">
+          <img
+            class="opacity-90 border-2 rounded-full h-50 w-50 shadow-xl hover:border-stone-600 hover:opacity-100 hover:z-auto transition-transform duration-300 ease-in-out transform hover:scale-105"
+            src="image/myPicture.jpg"
+            alt=""
+          />
+          <p class="text-center">
+            Hey there! I'm
+            <strong class="underline italic">Moubarak Akamou</strong>, a
+            passionate web developer. Welcome to my <br />corner of the web —
+            take a look around and check out my projects!
+          </p>
+        </div>
+      </section>
+      <section
+        id="projects"
+        class="bg-stone-300 border-0.5 px-12 xl:px-30 sm:px-20 pt-10 pb-20"
+      >
+        <h1 class="bg-slate-700 title-section text-gray-200">projects</h1>
+        <p></p>
+
+        <div class="grid grid-cols-12 mt-8">
+          <div
+            class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 p-4"
+          >
+            <a href="https://makamou.github.io/guess-game/" target="">
+              <div
+                class="cursor-pointer move-up-slightly duration-200 shadow-md hover:shadow-xl"
+              >
+                <div
+                  class="project-1 rounded-t-2xl h-60 w-full bg-[url('image/huessGame.png')]"
+                ></div>
+
+                <div
+                  class="project-description p-4 py-6 text-3xl font-extrabold text-center text-gray-900 bg-gradient-to-r from-green-300 to-green-400 rounded-b-2xl"
+                >
+                  Guess Game
+                  <div class="font-bolder mt-2 text-xl">
+                    Can You Guess the Computer's Number?
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div
+            class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 p-4"
+          >
+            <a
+              href="https://makamou.github.io/petite-focus/index.html"
+              target="_blank"
+              class="kill-link-style"
+            >
+              <div
+                class="cursor-pointer move-up-slightly duration-200 shadow-md hover:shadow-xl"
+              >
+                <div
+                  class="project-2 rounded-t-2xl h-60 w-full easy-emdr-demo"
+                ></div>
+                <div
+                  class="project-description p-4 py-6 text-3xl font-extrabold text-center text-gray-900 bg-gradient-to-r from-purple-300 to-purple-400 rounded-b-2xl"
+                >
+                  Photographic Website
+                  <div class="font-bolder mt-2 text-xl">
+                    Documenting my journey through photography
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div
+            class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 p-4"
+          >
+            <a
+              href="https://makamou.github.io/my-pig-game/"
+              target="_blank"
+              class="kill-link-style"
+            >
+              <div
+                class="cursor-pointer move-up-slightly duration-200 shadow-md hover:shadow-xl"
+              >
+                <div
+                  class="project-3 rounded-t-2xl h-60 w-full boycott-demo"
+                ></div>
+                <div
+                  class="project-description p-4 py-6 text-3xl font-extrabold text-center text-gray-900 bg-gradient-to-r from-blue-300 to-blue-400 rounded-b-2xl"
+                >
+                  Pig Game
+                  <div class="font-bolder mt-2 text-xl">
+                    Turn-based dice game with risk and strategy.
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 
+        in -->
+      </section>
+      <section
+        id="resume"
+        class="border-0.5 px-12 xl:px-30 sm:px-20 py-10 transition"
+      >
+        <p class="bg-slate-700 title-section text-gray-200">Skills</p>
+        <section class="py-12">
+          <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-extrabold text-gray-800 text-center mb-10">
+              Skills
+            </h2>
+
+            <!-- Proficient In -->
+            <div class="mb-8">
+              <h3 class="text-2xl font-bold text-gray-700 mb-4">
+                Proficient In
+              </h3>
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >AWS</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >HTML</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >CSS</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >JavaScript</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >Java</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >Python</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >SQL</span
+                >
+              </div>
+            </div>
+
+            <!-- Familiar With -->
+            <div class="mb-8">
+              <h3 class="text-2xl font-bold text-gray-700 mb-4">
+                Familiar With
+              </h3>
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >Bootstrap</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >Perl</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >TypeScript</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >Test Automation</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >Cloud Infrastructure (IaC)</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >Git</span
+                >
+              </div>
+            </div>
+
+            <!-- Additional Skills -->
+            <div class="mb-8">
+              <h3 class="text-2xl font-bold text-gray-700 mb-4">
+                Additional Skills
+              </h3>
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >Data Communication</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >Network Systems</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >Logic Design</span
+                >
+                <span
+                  class="bg-white rounded-xl shadow p-3 text-center text-gray-700 font-medium"
+                  >IT Project Management</span
+                >
+              </div>
+            </div>
+
+           
+            </div>
+          </div>
+        </section>
+      </section>
+      <section
+        id="blog"
+        class="bg-stone-300 border border-0.5 px-12 xl:px-30 sm:px-20 pt-16 pb-10 transition"
+      >
+        <h1 class="bg-slate-700 title-section text-gray-200">blog</h1>
+        <p>
+          orem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </p>
+      </section>
+      <section
+        class="px-5 sm:px-10 md:px-15 lg:px-20 py-12 transition bg-white"
+      >
+        <h2
+          class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center title-section"
+        >
+          Happy Folks Talkin
+        </h2>
+
+        <div class="flex flex-col md:flex-row gap-6 justify-center">
+          <!-- Testimonial Card -->
+          <div
+            class="transition-transform duration-300 ease-in-out transform hover:scale-105 lg:mx-5"
+          >
+            <div class="bg-gray-100 p-8 rounded-2xl shadow-md max-w-xl mx-auto">
+              <div
+                class="flex flex-col md:flex-row md:items-start md:gap-6 items-center text-center md:text-left"
+              >
+                <img
+                  src="https://i.pravatar.cc/100?img=12"
+                  alt="Client Photo"
+                  class="w-20 h-20 rounded-full shadow-md mb-4 md:mb-0"
+                />
+                <div>
+                  <p
+                    class="text-lg text-gray-700 italic mb-4 testiminial-title"
+                  >
+                    "So smooth, I think it flirted with me."
+                  </p>
+                  <p class="font-semibold text-gray-900 name">Tina G.</p>
+                  <p class="text-sm text-gray-500">Midnight Debugger</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duplicate Testimonial Card (for demo) -->
+          <div
+            class="transition-transform duration-300 ease-in-out transform hover:scale-105 lg:mx-5"
+          >
+            <div class="bg-gray-100 p-8 rounded-2xl shadow-md max-w-xl mx-auto">
+              <div
+                class="flex flex-col md:flex-row md:items-start md:gap-6 items-center text-center md:text-left"
+              >
+                <img
+                  src="https://i.pravatar.cc/100?img=10"
+                  alt="Client Photo"
+                  class="w-20 h-20 rounded-full shadow-md mb-4 md:mb-0"
+                />
+                <div>
+                  <p
+                    class="text-lg text-gray-700 italic mb-4 testiminial-title"
+                  >
+                    "Five stars. Six if you count the good vibes."
+                  </p>
+                  <p class="font-semibold text-gray-900 name">Max Y.</p>
+                  <p class="text-sm text-gray-500">UI UX Designer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duplicate Testimonial Card (for demo) -->
+          <div
+            class="transition-transform duration-300 ease-in-out transform hover:scale-105 lg:mx-5"
+          >
+            <div class="bg-gray-100 p-8 rounded-2xl shadow-md max-w-xl mx-auto">
+              <div
+                class="flex flex-col md:flex-row md:items-start md:gap-6 items-center text-center md:text-left"
+              >
+                <img
+                  src="https://i.pravatar.cc/100?img=9"
+                  alt="Client Photo"
+                  class="w-20 h-20 rounded-full shadow-md mb-4 md:mb-0"
+                />
+                <div>
+                  <p
+                    class="text-lg text-gray-700 italic mb-4 testiminial-title"
+                  >
+                    "So smooth, I think it flirted with me."
+                  </p>
+                  <p class="font-semibold text-gray-900 name">Choury B.</p>
+                  <p class="text-sm text-gray-500">Photographer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-blue-950 text-gray-400 py-10">
+      <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
+        <!-- Logo / Name -->
+        <h2 class="text-2xl font-semibold text-white">Moubarak Akamou</h2>
+        <p class="text-sm">Building modern, accessible web experiences.</p>
+
+        <!-- Links -->
+        <nav class="flex flex-wrap justify-center gap-6 text-sm">
+          <a href="#projects" class="hover:text-white transition">Projects</a>
+          <a href="#resume" class="hover:text-white transition">Skills</a>
+          <a href="#blog" class="hover:text-white transition">Blog</a>
+          <a href="#contact" class="hover:text-white transition">Contact</a>
+        </nav>
+
+        <!-- Social Icons (just placeholders here) -->
+        <div class="flex justify-center gap-6 text-xl">
+          <a href="#" class="hover:text-white transition">🌐</a>
+          <a href="#" class="hover:text-white transition">🐙</a>
+          <a href="#" class="hover:text-white transition">💼</a>
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs text-gray-500">
+          &copy; 2025 Moubarak Akamou. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<!-- 
+        <nav class=" bg-gray-800 ">
+            <div class=" lg:px-15 md:px-10 mx-auto max-w-7xl sm:px-6 ">
+                <div class="relative flex h-16 items-center justify-between">
+                    <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                        <!-- Mobile menu button
+                        <button type="button"
+                            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
+                            aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="absolute -inset-0.5"></span>
+                            <span class="sr-only">Open main menu</span>
+                            <!--
+                      Icon when menu is closed.
+          
+                      Menu open: "hidden", Menu closed: "block"
+                   
+                            <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                            <!--
+                      Icon when menu is open.
+          
+                      Menu open: "block", Menu closed: "hidden"
+                
+                            <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                        <div class="flex shrink-0 items-center">
+                            <img class="h-15 w-auto rounded-full" src="image/img1.png" alt="Your Company">
+                        </div>
+                        <div class="hidden sm:ml-6 sm:block">
+                            <div class="flex space-x-4 mt-2.5">
+                                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white"
+                                <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                                    aria-current="page">Projects</a>
+                                <a href="#"
+                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Resume</a>
+                                <a href="#"
+                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Blog</a>
+                                <!-- <a href="#"
+                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                        <a class="text-neutral-50 border-2 px-1 hover:bg-red-800 rounded-sm" href="#">Contact</a>
+
+
+
+                        <!-- Profile dropdown 
+                        <div class="relative ml-3">
+                            <div>
+                                <button type="button"
+                                    class="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                                    id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+
+
+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu, show/hide based on menu state. 
+            <div class="sm:hidden" id="mobile-menu">
+                <div class="space-y-1 px-2 pt-2 pb-3">
+                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" 
+                    <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                        aria-current="page">Projects</a>
+                    <a href="#"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Resume</a>
+                    <a href="#"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Blog</a>
+                    <!-- <a href="#"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a> 
+                </div>
+            </div>
+        </nav>
+
+
+-->
