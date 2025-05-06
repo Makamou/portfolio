@@ -12,15 +12,15 @@
 
 .project-1 {
   @apply bg-no-repeat bg-center bg-cover;
-  background-image: url("/image/guessGame.png");
+  background-image: url("./image/guessGame.png");
 }
 
 .project-2 {
   @apply bg-no-repeat bg-center bg-cover;
-  background-image: url("/image/studio.png");
+  background-image: url("./image/studio.png");
 }
 
 .project-3 {
   @apply bg-no-repeat bg-center bg-cover;
-  background-image: url("/image/pigGame.png");
+  background-image: url("./image/pigGame.png");
 }
