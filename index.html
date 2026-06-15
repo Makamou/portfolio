@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>Portfolio Preview — Dark Luxe</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,12 +56,24 @@
       body {
         margin: 0;
         padding: 0;
+        width: 100%;
+        min-width: 0;
+        max-width: 100vw;
+        overflow-x: hidden;
         background: var(--bg-base);
         color: var(--text-primary);
         font-family: var(--font-body);
         font-size: 16px;
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
+      }
+      /* All images scale within their container; never overflow */
+      img,
+      svg,
+      video {
+        max-width: 100%;
+        height: auto;
+        display: block;
       }
       body::before {
         content: "";
@@ -98,14 +113,17 @@
         left: 0;
         right: 0;
         z-index: 50;
-        height: 72px;
+        height: clamp(60px, 11vw, 72px);
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 clamp(24px, 6vw, 80px);
+        padding: 0 clamp(16px, 6vw, 80px);
         background: rgba(10, 10, 10, 0.7);
         backdrop-filter: saturate(180%) blur(18px);
+        -webkit-backdrop-filter: saturate(180%) blur(18px);
         border-bottom: 1px solid var(--border-subtle);
+        box-sizing: border-box;
       }
       .nav::after {
         content: "";
@@ -122,14 +140,20 @@
           transparent
         );
       }
+      /* Logo shrinks fluidly; never collides with hamburger on narrow screens */
       .portfolio-logo {
-        height: 64px;
+        height: clamp(30px, 8vw, 42px);
         width: auto;
-        max-width: 160px;
+        max-width: min(42vw, 160px);
         filter: brightness(1) contrast(1.05);
         transition:
           transform var(--t-fast),
           filter var(--t-fast);
+        flex-shrink: 1;
+      }
+      .portfolio-logo:hover {
+        transform: scale(1.04);
+        filter: brightness(1.15);
       }
       .logo {
         font-family: var(--font-display);
@@ -141,22 +165,27 @@
       .logo span {
         color: var(--gold);
       }
+
+      /* Desktop nav links */
       .nav-right {
         display: flex;
-        gap: 6px;
+        gap: clamp(2px, 1.2vw, 6px);
+        align-items: center;
+        flex-wrap: nowrap;
       }
       .nav-btn {
         position: relative;
         background: none;
         border: none;
         color: var(--text-secondary);
-        padding: 10px 18px;
+        padding: 10px clamp(8px, 1.6vw, 18px);
         font-family: var(--font-body);
-        font-size: 0.875rem;
+        font-size: clamp(0.7rem, 1.6vw, 0.875rem);
         font-weight: 500;
         letter-spacing: 0.04em;
         cursor: pointer;
         text-transform: uppercase;
+        white-space: nowrap;
         transition: color var(--t-fast);
       }
       .nav-btn::after {
@@ -183,48 +212,111 @@
         width: 70%;
       }
 
+      /* ── Hamburger toggle (hidden on desktop) ── */
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        padding: 0;
+        border: none;
+        border-radius: 8px;
+        background: transparent;
+        cursor: pointer;
+        z-index: 51;
+        flex-shrink: 0;
+      }
+      .nav-toggle:hover {
+        background: var(--gold-soft);
+      }
+      .nav-toggle-bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--text-primary);
+        transition:
+          transform var(--t-fast),
+          opacity var(--t-fast),
+          background var(--t-fast);
+      }
+      .nav-toggle.open .nav-toggle-bar {
+        background: var(--gold);
+      }
+      .nav-toggle.open .nav-toggle-bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-toggle.open .nav-toggle-bar:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.open .nav-toggle-bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Backdrop behind mobile menu */
+      .nav-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        top: clamp(60px, 11vw, 72px);
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 45;
+      }
+      .nav-backdrop.open {
+        display: block;
+      }
+
       /* LAYOUT */
       .page {
         position: relative;
         z-index: 1;
-        min-height: 100vh;
+        min-height: 100vh; /* fallback */
+        min-height: 100dvh; /* Safari/Chrome mobile: excludes browser chrome */
         display: flex;
         flex-direction: column;
+        width: 100%;
+        overflow-x: hidden;
       }
       .body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 120px;
-        padding: 140px 24px 80px;
+        gap: clamp(64px, 12vw, 120px);
+        padding: clamp(96px, 18vw, 140px) clamp(16px, 4vw, 24px)
+          clamp(48px, 8vw, 80px);
         width: 100%;
       }
 
       /* ABOUT */
       .about {
-        width: 100%;
+        width: min(100% - 2rem, 900px);
         max-width: 900px;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 40px 24px 0;
+        padding: clamp(24px, 6vw, 40px) 0 0;
         position: relative;
       }
       .eyebrow {
         font-family: var(--font-mono);
         font-size: 0.7rem;
-        letter-spacing: 0.4em;
+        letter-spacing: clamp(0.15em, 1vw, 0.4em);
         color: var(--gold);
         margin-bottom: 32px;
         opacity: 0;
         animation: fadeUp 1s var(--ease) 0.1s forwards;
       }
-      .profile {
-        width: 180px;
-        height: 180px;
+      /* Wrapper div for profile picture — provides the circular fallback
+         background and the fade-in animation */
+      .profile-wrap {
+        width: clamp(120px, 32vw, 180px);
+        height: clamp(120px, 32vw, 180px);
         border-radius: 50%;
-        object-fit: cover;
         border: 1px solid var(--border-gold);
         box-shadow:
           0 0 0 6px rgba(212, 175, 55, 0.05),
@@ -239,31 +331,42 @@
         align-items: center;
         justify-content: center;
         font-family: var(--font-display);
-        font-size: 3rem;
+        font-size: clamp(2rem, 8vw, 3rem);
         color: var(--gold);
         font-weight: 600;
+        overflow: hidden;
+        flex-shrink: 0;
       }
-      .profile:hover {
+      .profile-wrap:hover {
         transform: translateY(-4px) scale(1.02);
         box-shadow:
           0 0 0 6px rgba(212, 175, 55, 0.1),
           0 30px 60px rgba(0, 0, 0, 0.7),
           0 0 50px rgba(212, 175, 55, 0.15);
       }
+      /* Actual photo inside the wrapper */
+      .profile-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+      }
       .about-text {
         margin-top: 36px;
         max-width: 680px;
-        font-size: 1.125rem;
+        font-size: clamp(1rem, 2.4vw, 1.125rem);
         line-height: 1.8;
         color: var(--text-secondary);
         font-weight: 300;
         opacity: 0;
         animation: fadeUp 1s var(--ease) 0.5s forwards;
+        overflow-wrap: break-word;
       }
       .about-text strong {
         font-family: var(--font-display);
         font-weight: 600;
-        font-size: 1.5em;
+        font-size: clamp(1.3em, 4vw, 1.5em);
         display: block;
         color: var(--text-primary);
         margin-bottom: 12px;
@@ -280,7 +383,7 @@
 
       /* SKILLS */
       .skills {
-        width: 100%;
+        width: min(100% - 2rem, 1100px);
         max-width: 1100px;
         display: flex;
         flex-direction: column;
@@ -292,7 +395,8 @@
         );
         border: 1px solid var(--border-subtle);
         border-radius: 20px;
-        padding: 64px 24px 80px;
+        padding: clamp(40px, 8vw, 64px) clamp(16px, 4vw, 24px)
+          clamp(48px, 10vw, 80px);
         position: relative;
         overflow: hidden;
       }
@@ -337,8 +441,9 @@
       }
       .skills-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 18px;
+        /* min(140px,100%) prevents overflow at very narrow viewports */
+        grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+        gap: clamp(12px, 3vw, 18px);
         width: 100%;
         max-width: 900px;
       }
@@ -389,14 +494,17 @@
 
       /* PROJECTS */
       .projects {
-        width: 100%;
+        width: min(100% - 2rem, 1100px);
         max-width: 1100px;
-        padding: 0 24px;
+        padding: 0;
       }
       .projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 28px;
+        /* min(280px,100%) prevents a column from ever exceeding container
+           width — eliminates horizontal scroll on 320–375px phones */
+        grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+        gap: clamp(16px, 4vw, 28px);
+        width: 100%;
         max-width: 1100px;
         margin: 0 auto;
       }
@@ -410,6 +518,7 @@
           rgba(17, 17, 17, 0.7)
         );
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border-subtle);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         transition:
@@ -417,6 +526,10 @@
           box-shadow var(--t-med),
           border-color var(--t-med);
         cursor: pointer;
+        /* Anchors are inline by default — force block so the card layout works */
+        display: block;
+        color: inherit;
+        text-decoration: none;
       }
       .project:hover {
         transform: translateY(-6px);
@@ -427,7 +540,8 @@
       }
       .project-img {
         position: relative;
-        height: 220px;
+        height: clamp(160px, 38vw, 220px);
+        width: 100%;
         background-size: cover;
         background-position: center;
         transition: transform 0.6s var(--ease);
@@ -464,19 +578,21 @@
       }
       .project-desc {
         position: relative;
-        padding: 24px;
+        padding: clamp(16px, 4vw, 24px);
         text-align: left;
+        overflow-wrap: break-word;
       }
       .project-desc h3 {
         font-family: var(--font-display);
-        font-size: 1.4rem;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
         font-weight: 600;
         margin: 0 0 8px;
         color: var(--text-primary);
         letter-spacing: -0.01em;
+        overflow-wrap: break-word;
       }
       .project-desc p {
-        font-size: 0.9rem;
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
         margin: 0;
         color: var(--text-secondary);
         line-height: 1.6;
@@ -508,9 +624,49 @@
         opacity: 0.4;
       }
 
+      /* PROJECT CLIENT */
+      .project-client {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border-subtle);
+      }
+      .client-icon {
+        flex-shrink: 0;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid var(--border-gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold);
+      }
+      .client-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+      .client-info strong {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 4px;
+      }
+      .client-info span {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        border-bottom: 1px dashed var(--border-gold);
+      }
+
       /* CONTACT */
       .contact {
-        width: 100%;
+        width: min(100% - 2rem, 720px);
         max-width: 720px;
         background: linear-gradient(
           180deg,
@@ -518,10 +674,11 @@
           rgba(17, 17, 17, 0.6)
         );
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border-subtle);
         border-radius: 16px;
         text-align: center;
-        padding: 64px 48px;
+        padding: clamp(32px, 8vw, 64px) clamp(20px, 6vw, 48px);
         margin: 0 auto;
         position: relative;
         overflow: hidden;
@@ -611,6 +768,10 @@
         color: var(--text-primary);
         font-size: 0.95rem;
         transition: all var(--t-fast);
+        /* Fill the form width; prevents textarea from overflowing on mobile */
+        width: 100%;
+        resize: vertical;
+        box-sizing: border-box;
       }
       .form input::placeholder,
       .form textarea::placeholder {
@@ -655,6 +816,7 @@
         font-family: var(--font-mono);
         letter-spacing: 0.04em;
         text-align: center;
+        transition: opacity 0.6s ease;
       }
       .form-status.success {
         color: var(--gold-light);
@@ -666,7 +828,8 @@
       /* FOOTER */
       .footer {
         position: relative;
-        padding: 56px 24px 36px;
+        padding: clamp(36px, 8vw, 56px) clamp(16px, 5vw, 24px)
+          clamp(24px, 5vw, 36px);
         text-align: center;
         border-top: 1px solid var(--border-subtle);
         display: flex;
@@ -674,6 +837,8 @@
         align-items: center;
         gap: 10px;
         background: var(--bg-base);
+        width: 100%;
+        overflow: hidden;
       }
       .footer::before {
         content: "";
@@ -701,7 +866,7 @@
       .footer-tag {
         font-family: var(--font-mono);
         font-size: 0.7rem;
-        letter-spacing: 0.4em;
+        letter-spacing: clamp(0.15em, 1vw, 0.4em);
         color: var(--gold);
         margin: 4px 0 18px;
       }
@@ -723,62 +888,168 @@
         }
       }
 
-      @media (max-width: 700px) {
+      /* ── Mobile: hamburger menu at ≤768px ── */
+      @media (max-width: 768px) {
         html {
-          /* Navbar shrinks to 64px on small screens */
-          scroll-padding-top: 84px;
+          scroll-padding-top: 80px;
         }
-        .nav {
-          height: 64px;
-          padding: 0 16px;
+
+        .nav-toggle {
+          display: flex;
         }
-        .nav-btn {
-          padding: 8px 10px;
-          font-size: 0.75rem;
-          letter-spacing: 0.02em;
+
+        /* Nav links become a full-width dropdown panel */
+        .nav-right {
+          position: fixed;
+          top: clamp(60px, 11vw, 72px);
+          left: 0;
+          right: 0;
+          z-index: 50;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          width: 100%;
+          max-height: calc(100dvh - clamp(60px, 11vw, 72px));
+          overflow-y: auto;
+          background: rgba(10, 10, 10, 0.96);
+          backdrop-filter: saturate(180%) blur(18px);
+          -webkit-backdrop-filter: saturate(180%) blur(18px);
+          border-bottom: 1px solid var(--border-subtle);
+          transform: translateY(-12px);
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transition:
+            opacity var(--t-med),
+            transform var(--t-med),
+            visibility var(--t-med);
         }
-        .body {
-          padding: 110px 16px 60px;
-          gap: 80px;
+        .nav-right.open {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
         }
-        .contact {
-          padding: 44px 24px;
-        }
-        .about-text {
+        .nav-right .nav-btn {
+          width: 100%;
+          text-align: left;
+          padding: 16px clamp(16px, 6vw, 32px);
           font-size: 1rem;
+          letter-spacing: 0.04em;
+          border-bottom: 1px solid var(--border-subtle);
+          white-space: normal;
         }
-        .profile {
-          width: 150px;
-          height: 150px;
-          font-size: 2.5rem;
+        .nav-right .nav-btn::after {
+          display: none;
+        }
+        .nav-right .nav-btn.active {
+          background: var(--gold-soft);
+        }
+
+        .contact {
+          border-radius: 14px;
+        }
+        .contact-details strong {
+          display: block;
+          margin-right: 0;
+        }
+        .skills-grid {
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(120px, 100%), 1fr)
+          );
+        }
+      }
+
+      /* ── Short landscape viewports (phones rotated) ── */
+      @media (orientation: landscape) and (max-height: 500px) {
+        .body {
+          gap: 48px;
+          padding-top: 80px;
+          padding-bottom: 40px;
+        }
+        .nav-right {
+          max-height: calc(100dvh - 60px);
+        }
+        .project-img {
+          height: clamp(130px, 26vh, 200px);
+        }
+      }
+
+      /* ── Very small phones: 320–380px ── */
+      @media (max-width: 380px) {
+        .section-title {
+          font-size: 1.75rem;
+        }
+        .skills-grid {
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100px, 100%), 1fr)
+          );
+          gap: 10px;
+        }
+        .skill-card {
+          padding: 16px 10px;
+        }
+        .skill-card img {
+          width: 36px;
+          height: 36px;
         }
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <nav class="nav">
-        <img src="./logo-portfolio.png" class="portfolio-logo" alt="" />
+      <nav class="nav" role="navigation" aria-label="Primary">
+        <img
+          src="./logo-portfolio.png"
+          class="portfolio-logo"
+          alt="Moubarak Akamou — Portfolio"
+        />
 
-        <div class="nav-right">
-          <button class="nav-btn" data-target="about">About</button>
-          <button class="nav-btn" data-target="skills">Skills</button>
-          <button class="nav-btn active" data-target="projects">
+        <!-- Hamburger: visible only on mobile (≤768px) -->
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-right"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+
+        <div class="nav-right" id="nav-right" role="list">
+          <button class="nav-btn" data-target="about" role="listitem">
+            About
+          </button>
+          <button class="nav-btn" data-target="skills" role="listitem">
+            Skills
+          </button>
+          <button class="nav-btn active" data-target="projects" role="listitem">
             Projects
           </button>
-          <button class="nav-btn" data-target="contact">Contact</button>
+          <button class="nav-btn" data-target="contact" role="listitem">
+            Contact
+          </button>
         </div>
       </nav>
+
+      <!-- Backdrop: closes the mobile menu on tap outside -->
+      <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
       <div class="body">
         <!-- ABOUT -->
         <section id="about" class="about">
           <span class="eyebrow">PORTFOLIO • 2026</span>
-          <div class="profile">
+          <div class="profile-wrap" aria-hidden="true">
             <img
-              class="profile"
+              class="profile-img"
               alt="Moubarak Akamou"
               src="./myPicture-blackWhitejpg.jpg"
+              loading="eager"
+              decoding="async"
             />
           </div>
           <p class="about-text">
@@ -886,7 +1157,10 @@
               </div>
               <div class="project-desc">
                 <h3>Guess Game</h3>
-                <p>Can You Guess the Computer's Number?</p>
+                <p>
+                  Guess the computer’s secret number within limited attempts
+                  using logic and hints.
+                </p>
                 <span class="arrow">→</span>
               </div>
             </a>
@@ -897,11 +1171,14 @@
             >
               <div class="project-img">
                 <span class="tag">Web</span>
-                <div class="placeholder-img">◐</div>
+                <div class="placeholder-img">◉</div>
               </div>
               <div class="project-desc">
                 <h3>Photographic Website</h3>
-                <p>Documenting my journey through photography</p>
+                <p>
+                  Documenting my personal journey through photography and
+                  storytelling
+                </p>
                 <span class="arrow">→</span>
               </div>
             </a>
@@ -916,23 +1193,10 @@
               </div>
               <div class="project-desc">
                 <h3>Pig Game</h3>
-                <p>Turn-based dice game with risk and strategy.</p>
-                <span class="arrow">→</span>
-              </div>
-            </a>
-            <a
-              class="project"
-              href="https://humbledelicacies.netlify.app/"
-              target="_blank"
-            >
-              <!-- style="background-image: url(./guessGame.png)" -->
-              <div class="project-img">
-                <span class="tag">Web</span>
-                <div class="placeholder-img">◐</div>
-              </div>
-              <div class="project-desc">
-                <h3>Humble Delicacies</h3>
-                <p>Home bakery crafting fresh artisanal cookies and muffins.</p>
+                <p>
+                  Turn-based dice game with risk, strategy, and decision-making
+                  mechanics.
+                </p>
                 <span class="arrow">→</span>
               </div>
             </a>
@@ -943,11 +1207,14 @@
             >
               <div class="project-img">
                 <span class="tag">Web</span>
-                <div class="placeholder-img">◐</div>
+                <div class="placeholder-img">⬡</div>
               </div>
               <div class="project-desc">
                 <h3>OlaBank</h3>
-                <p>A premium online-banking dashboard concept</p>
+                <p>
+                  A premium online-banking dashboard concept with real-time
+                  analytics and intuitive controls.
+                </p>
                 <span class="arrow">→</span>
               </div>
             </a>
@@ -958,13 +1225,13 @@
             >
               <div class="project-img">
                 <span class="tag">Web</span>
-                <div class="placeholder-img">◐</div>
+                <div class="placeholder-img">✦</div>
               </div>
               <div class="project-desc">
                 <h3>Chez Christian</h3>
                 <p>
                   An AI sous-chef that turns the ingredients you have into a
-                  recipe.
+                  personalized recipe.
                 </p>
                 <span class="arrow">→</span>
               </div>
@@ -976,7 +1243,7 @@
             >
               <div class="project-img">
                 <span class="tag">Game</span>
-                <div class="placeholder-img">◐</div>
+                <div class="placeholder-img">⚅</div>
               </div>
               <div class="project-desc">
                 <h3>LangGuesser</h3>
@@ -994,7 +1261,7 @@
             >
               <div class="project-img">
                 <span class="tag">Web</span>
-                <div class="placeholder-img">◐</div>
+                <div class="placeholder-img">▣</div>
               </div>
               <div class="project-desc">
                 <h3>AyoFlow</h3>
@@ -1012,13 +1279,139 @@
             >
               <div class="project-img">
                 <span class="tag">Game</span>
-                <div class="placeholder-img">◐</div>
+                <div class="placeholder-img">◓</div>
               </div>
               <div class="project-desc">
                 <h3>RockPaperScissor</h3>
                 <p>
-                  A customizable Rock-Paper-Scissors game against the computer.
+                  A customizable Rock-Paper-Scissors game against the computer
+                  with adjustable difficulty.
                 </p>
+                <span class="arrow">→</span>
+              </div>
+            </a>
+            <a class="project" href="" target="_blank">
+              <div class="project-img">
+                <span class="tag">WEB</span>
+                <div class="placeholder-img">◓</div>
+              </div>
+              <div class="project-desc">
+                <h3>Ubuntu Diaspora</h3>
+                <p>
+                  Platform for Africans to connect and find each other
+                  worldwide, launching July (web, iOS, Android).
+                </p>
+                <span class="arrow">→</span>
+              </div>
+            </a>
+            <a
+              class="project"
+              href="https://humbledelicacies.netlify.app/"
+              target="_blank"
+            >
+              <div class="project-img">
+                <span class="tag">Web</span>
+                <div class="placeholder-img">❋</div>
+              </div>
+              <div class="project-desc">
+                <h3>Humble Delicacies</h3>
+                <p>
+                  Home bakery crafting fresh artisanal cookies and muffins with
+                  local delivery and custom orders.
+                </p>
+                <div class="project-client">
+                  <span class="client-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="8" r="4" />
+                      <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+                    </svg>
+                  </span>
+                  <div class="client-info">
+                    <strong>Client</strong>
+                    <span>CEO Abigail A.</span>
+                  </div>
+                </div>
+                <span class="arrow">→</span>
+              </div>
+            </a>
+            <a
+              class="project"
+              href="https://shalomtransit.com/"
+              target="_blank"
+            >
+              <div class="project-img">
+                <span class="tag">Web</span>
+                <div class="placeholder-img">◧</div>
+              </div>
+              <div class="project-desc">
+                <h3>Shalom Entreprise</h3>
+                <p>
+                  Built a responsive React site for Shalom Enterprise Limo (DFW)
+                  with online booking and EmailJS reservations.
+                </p>
+                <div class="project-client">
+                  <span class="client-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="8" r="4" />
+                      <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+                    </svg>
+                  </span>
+                  <div class="client-info">
+                    <strong>Client</strong>
+                    <span>CEO John S.</span>
+                  </div>
+                </div>
+                <span class="arrow">→</span>
+              </div>
+            </a>
+            <a
+              class="project"
+              href="https://makamou.github.io/vividspacemedia/"
+              target="_blank"
+            >
+              <div class="project-img">
+                <span class="tag">Web</span>
+                <div class="placeholder-img">❖</div>
+              </div>
+              <div class="project-desc">
+                <h3>Vivid Space Media</h3>
+                <p>
+                  Vivid Space Media — Professional real estate photography that
+                  makes properties stand out and sell faster.
+                </p>
+                <div class="project-client">
+                  <span class="client-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="8" r="4" />
+                      <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+                    </svg>
+                  </span>
+                  <div class="client-info">
+                    <strong>Client</strong>
+                    <span>Anonymous</span>
+                  </div>
+                </div>
                 <span class="arrow">→</span>
               </div>
             </a>
@@ -1071,6 +1464,36 @@
     </div>
 
     <script>
+      // ── Hamburger menu toggle ────────────────────────────────────────
+      const navToggle = document.getElementById("nav-toggle");
+      const navRight = document.getElementById("nav-right");
+      const navBackdrop = document.getElementById("nav-backdrop");
+
+      function openMenu() {
+        navToggle.classList.add("open");
+        navRight.classList.add("open");
+        navBackdrop.classList.add("open");
+        navToggle.setAttribute("aria-expanded", "true");
+        navToggle.setAttribute("aria-label", "Close navigation menu");
+        document.body.style.overflow = "hidden"; // lock background scroll
+      }
+      function closeMenu() {
+        navToggle.classList.remove("open");
+        navRight.classList.remove("open");
+        navBackdrop.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Open navigation menu");
+        document.body.style.overflow = "";
+      }
+
+      navToggle.addEventListener("click", () =>
+        navToggle.classList.contains("open") ? closeMenu() : openMenu(),
+      );
+      navBackdrop.addEventListener("click", closeMenu);
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+
       // ── Click-to-scroll for nav buttons ─────────────────────────────
       const navButtons = document.querySelectorAll(".nav-btn[data-target]");
       navButtons.forEach((btn) => {
@@ -1082,6 +1505,8 @@
           // in sync afterwards as you scroll.
           navButtons.forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
+          // Close mobile menu if open
+          closeMenu();
         });
       });
 
@@ -1136,6 +1561,15 @@
           formStatus.textContent = "Thanks! Your message has been sent.";
           formStatus.classList.add("success");
           contactForm.reset();
+          // Fade out after 4 s, then clear so layout doesn't shift
+          setTimeout(() => {
+            formStatus.style.opacity = "0";
+            setTimeout(() => {
+              formStatus.textContent = "";
+              formStatus.className = "form-status";
+              formStatus.style.opacity = "";
+            }, 600); // matches the CSS transition duration
+          }, 4000);
         } catch (err) {
           formStatus.textContent =
             "Something went wrong. Please try again or email me directly.";
