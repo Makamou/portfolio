@@ -1,0 +1,189 @@
+[
+  {
+    "title": "QuranRoots",
+    "category": "Applications",
+    "status": "Product development",
+    "summary": "An English and French Quran reading and learning experience.",
+    "detail": "Reading, structured lessons, and progress tracking in one bilingual experience. Work includes interface improvements, production validation, security headers, and deployment workflows.",
+    "stack": "Cloudflare Workers · Supabase · EN / FR",
+    "image": "quranroots",
+    "url": "https://quranroots.vertexone.workers.dev",
+    "initials": "QR"
+  },
+  {
+    "title": "Shalom Enterprise",
+    "category": "Business",
+    "status": "Website",
+    "summary": "A polished digital presence for a limousine service.",
+    "detail": "A transport business website built around service discovery and reservations. The supplied portfolio describes an EmailJS reservation integration.",
+    "stack": "Business website · Reservations",
+    "image": "shalomEntreprise",
+    "url": "https://shalomtransit.com/",
+    "initials": "SE"
+  },
+  {
+    "title": "Chez Christian",
+    "category": "Applications",
+    "status": "AI application",
+    "summary": "Turn ingredients into ideas for your next meal.",
+    "detail": "An AI recipe application that helps users explore meals based on the ingredients they have available.",
+    "stack": "AI · Recipe generation",
+    "image": "chefChristian",
+    "url": "https://chef-christian.vercel.app/",
+    "initials": "CC"
+  },
+  {
+    "title": "Assure Coaching",
+    "category": "Business",
+    "status": "Website redesign",
+    "summary": "A cohesive web experience for a coaching business.",
+    "detail": "A redesign focused on clear content, responsive layouts, and consistent design across pages, including the blog experience.",
+    "stack": "Responsive design · Content architecture",
+    "image": null,
+    "url": "https://makamou.github.io/assure-coaching/",
+    "initials": "AC"
+  },
+  {
+    "title": "Humble Delicacies",
+    "category": "Business",
+    "status": "Website",
+    "summary": "A warm, distinctive website for an artisanal bakery.",
+    "detail": "A bakery website presenting its products and brand, with ordering and delivery information described in the original portfolio.",
+    "stack": "Bakery · Brand experience",
+    "image": "humbleDelicacies",
+    "url": "https://humbledelicacies.netlify.app/",
+    "initials": "HD"
+  },
+  {
+    "title": "Vivid Space Media",
+    "category": "Business",
+    "status": "Photography portfolio",
+    "summary": "Give real estate photography room to speak.",
+    "detail": "A property photography portfolio designed around image presentation, service information, and an approachable brand experience.",
+    "stack": "Photography · Portfolio",
+    "image": "vividSpaces",
+    "url": "https://makamou.github.io/vividspacemedia/",
+    "initials": "VS"
+  },
+  {
+    "title": "Petite Focus",
+    "category": "Business",
+    "status": "Photography portfolio",
+    "summary": "A visual home for photographic storytelling.",
+    "detail": "A photography portfolio that uses imagery and a restrained interface to showcase visual work.",
+    "stack": "Photography · Visual storytelling",
+    "image": "petiteFocus",
+    "url": "https://makamou.github.io/petite-focus/index.html",
+    "initials": "PF"
+  },
+  {
+    "title": "OlaBank Dashboard",
+    "category": "Applications",
+    "status": "Interface project",
+    "summary": "Explore a banking dashboard through a focused interface.",
+    "detail": "A banking dashboard interface project exploring financial information, visual hierarchy, and account controls. Presented as a portfolio interface, not a banking service.",
+    "stack": "FinTech interface · UI / UX",
+    "image": "olaBank",
+    "url": "https://makamou.github.io/olabank/",
+    "initials": "OB"
+  },
+  {
+    "title": "AyoFlow",
+    "category": "Applications",
+    "status": "Productivity application",
+    "summary": "A simple interface for organizing everyday tasks.",
+    "detail": "A task management application exploring task organization and a streamlined productivity interface.",
+    "stack": "Productivity · Interface design",
+    "image": "ayoFlow",
+    "url": "https://makamou.github.io/AyoFlow/",
+    "initials": "AF"
+  },
+  {
+    "title": "LangGuesser",
+    "category": "Games",
+    "status": "React game",
+    "summary": "A programming language twist on Hangman.",
+    "detail": "An interactive guessing game that uses programming language names as its theme, with a React interface and keyboard-style controls.",
+    "stack": "React · Game interactions",
+    "image": "langGuesser",
+    "url": "https://lang-guesser.vercel.app/",
+    "initials": "LG"
+  },
+  {
+    "title": "Guess Game",
+    "category": "Games",
+    "status": "Game project",
+    "summary": "Find the secret number, one guess at a time.",
+    "detail": "A number guessing game exploring user input, feedback, scoring, and interactive game logic.",
+    "stack": "Game logic · Interactive UI",
+    "image": "GuessNumber",
+    "url": "https://makamou.github.io/guessNumber/",
+    "initials": "GG"
+  },
+  {
+    "title": "Pig Game",
+    "category": "Games",
+    "status": "Game project",
+    "summary": "A turn-based game of risk and reward.",
+    "detail": "A dice game centered on turn-taking, accumulating points, and choosing when to hold a score.",
+    "stack": "State management · Game logic",
+    "image": "pigGame",
+    "url": "https://makamou.github.io/my-pig-game/",
+    "initials": "PG"
+  },
+  {
+    "title": "Rock Paper Scissors",
+    "category": "Games",
+    "status": "Game project",
+    "summary": "A familiar game with a playful digital interface.",
+    "detail": "A browser game built around player choices, computer responses, and outcome feedback.",
+    "stack": "Game interactions · UI design",
+    "image": "rockpper",
+    "url": "https://makamou.github.io/RockPaperScissor/",
+    "initials": "RP"
+  },
+  {
+    "title": "Ubuntu Diaspora",
+    "category": "Applications",
+    "status": "Concept / preview",
+    "summary": "A community platform connecting the African diaspora.",
+    "detail": "A community platform concept presented in the supplied portfolio. The attached materials include a preview image but no public project URL.",
+    "stack": "Community · Platform concept",
+    "image": "ubuntu",
+    "url": null,
+    "initials": "UD"
+  },
+  {
+    "title": "MediaVertex One",
+    "category": "In progress",
+    "status": "In development",
+    "summary": "A self-hosted media platform, built layer by layer.",
+    "detail": "A portfolio and learning project progressing from Docker and Nginx toward a full media platform. The planned architecture includes React, Django REST, PostgreSQL, Redis, Celery, object storage, FFmpeg, and HLS. These are planned capabilities, not a completed production stack.",
+    "stack": "Docker · Nginx · Planned media architecture",
+    "image": null,
+    "url": null,
+    "initials": "MV"
+  },
+  {
+    "title": "ReadyOps",
+    "category": "In progress",
+    "status": "Concept & design",
+    "summary": "An operations product taking shape through research.",
+    "detail": "An application concept developed through problem research and an initial interface direction. Product discovery and design are the current stage.",
+    "stack": "Product research · UX concept",
+    "image": null,
+    "url": null,
+    "initials": "RO"
+  },
+  {
+    "title": "Vertex Studio",
+    "category": "Business",
+    "status": "Studio website",
+    "summary": "A branded showcase for digital design and development.",
+    "detail": "The original studio website supplied with this portfolio. It presents services, project categories, contact information, and a visual brand system.",
+    "stack": "HTML · CSS · JavaScript",
+    "image": "about_pic",
+    "url": null,
+    "initials": "VX"
+  }
+]
