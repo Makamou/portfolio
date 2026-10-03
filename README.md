@@ -1,25 +1,19 @@
 # Moubarak Akamou — Portfolio
 
-A responsive HTML, CSS and JavaScript portfolio containing 17 projects.
+Live: https://makamou.github.io/portfolio/
 
-## Preview locally
-Extract this folder, open a terminal inside it, and run:
+Updated personal portfolio with 17 projects, responsive layouts, animations, project filters and an M favicon.
 
-    python3 -m http.server 8081
+## Preview
 
-Then open http://localhost:8081 in your browser. A local server is required to load projects.json.
+Run `python3 -m http.server 8081` from the repository, then open http://localhost:8081.
 
-## Edit
-- index.html: biography, navigation and contact information
-- styles.css: layout, colors and typography
-- projects.json: project descriptions, categories, links and status
-- app.js: filters and project details
-- assets/: optimized images from the supplied website
+## Editable source
 
-## Deploy to GitHub Pages
-Upload these files at the root of your website repository. In Settings > Pages, choose your publishing branch and the root folder. Do not upload just the ZIP.
+Download and extract `portfolio-source.zip`. Project content lives in `src/data/projects.ts`.
 
-## Content notes
-All 12 original portfolio projects are included, alongside QuranRoots, Assure Coaching, MediaVertex One, ReadyOps and Vertex Studio.
-MediaVertex One is in development; ReadyOps is a concept and design project. Ubuntu Diaspora and Vertex Studio have no supplied public demo links. External project availability has not been independently verified. No years of experience, certifications, client testimonials or delivery counts have been invented.
-Contact links open email and phone applications; there is no message submission backend. Google Fonts is optional, with system font fallbacks.
+Run `npm ci`, `npm test`, `npx tsc --noEmit`, and `npm run build:pages` in the extracted source folder.
+
+The generated `dist-pages/` directory is the complete static website. Publish its contents at the repository root, preserving `.nojekyll`. GitHub Pages publishes `main` from the root folder.
+
+The current deployment reuses the existing `assets/` images. Its compiled JavaScript and CSS are at the root. The older `app.js`, `styles.css`, and `projects.json` are unused by the new website.
